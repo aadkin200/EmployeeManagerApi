@@ -2,6 +2,8 @@ package com.apsoftware.employeemanagerapi.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,9 +15,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "departments")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Department {
 	@Id
     @Column(name = "dept_no", length = 4)
@@ -24,9 +23,13 @@ public class Department {
     @Column(name = "dept_name", nullable = false, unique = true)
     private String deptName;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "department")
     private List<DeptEmp> employees;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "department")
     private List<DeptManager> managers;
+    
+    
 }

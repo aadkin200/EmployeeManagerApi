@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.apsoftware.employeemanagerapi.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,15 +45,19 @@ public class Employee {
 	@Column(name = "hire_date", nullable = false)
 	private LocalDate hireDate;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "employee")
     private List<Salary> salaries;
 	
+	@JsonIgnore
     @OneToMany(mappedBy = "employee")
     private List<Title> titles;
     
+	@JsonIgnore
     @OneToMany(mappedBy = "employee")
     private List<DeptEmp> departments;
     
+	@JsonIgnore
     @OneToMany(mappedBy = "employee")
     private List<DeptManager> managedDepartments;
 }
