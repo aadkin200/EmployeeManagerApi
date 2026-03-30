@@ -4,16 +4,16 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
 @Embeddable
-public class SalaryId implements Serializable {
+@Data
+public class TitleId implements Serializable {
 	
-	private Long empNo;
-	
-	private LocalDate fromDate;
-	
+    private Integer empNo;
+    
+    private String title;
+    
+    private LocalDate fromDate;
+    
 }

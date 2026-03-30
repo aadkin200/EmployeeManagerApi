@@ -1,6 +1,7 @@
 package com.apsoftware.employeemanagerapi.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.apsoftware.employeemanagerapi.enums.Gender;
 
@@ -25,17 +26,33 @@ import lombok.NoArgsConstructor;
 public class Employee {
 	@Id
 	@Column(name = "emp_no")
-	private Long id;
-	@Column(name = "birth_date")
+	private Long empNo;
+	
+	@Column(name = "birth_date", nullable = false)
 	private LocalDate birthDate;
-	@Column(name = "first_name")
+	
+	@Column(name = "first_name", nullable = false, length = 14)
 	private String firstName;
-	@Column(name = "last_name")
+	
+	@Column(name = "last_name", nullable = false, length = 16)
 	private String lastName;
+	
 	@Enumerated(EnumType.STRING)
+	@Column(name = "gender", nullable = false)
 	private Gender gender;
-	@Column(name = "hire_date")
+	
+	@Column(name = "hire_date", nullable = false)
 	private LocalDate hireDate;
+	
 	@OneToMany(mappedBy = "employee")
-	private Salary salary;
+    private List<Salary> salaries;
+	
+    @OneToMany(mappedBy = "employee")
+    private List<Title> titles;
+    
+    @OneToMany(mappedBy = "employee")
+    private List<DeptEmp> departments;
+    
+    @OneToMany(mappedBy = "employee")
+    private List<DeptManager> managedDepartments;
 }

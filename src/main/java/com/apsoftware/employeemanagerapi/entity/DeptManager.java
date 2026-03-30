@@ -2,11 +2,8 @@ package com.apsoftware.employeemanagerapi.entity;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -16,22 +13,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "salaries")
-@IdClass(SalaryId.class)
+@Table(name = "dept_manager")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Salary {
-	@EmbeddedId
-    private SalaryId id;
+public class DeptManager {
+
+    @EmbeddedId
+    private DeptManagerId id;
 
     @ManyToOne
     @MapsId("empNo")
     @JoinColumn(name = "emp_no")
     private Employee employee;
 
-    private Integer salary;
+    @ManyToOne
+    @MapsId("deptNo")
+    @JoinColumn(name = "dept_no")
+    private Department department;
 
-    @Column(name = "to_date")
+    private LocalDate fromDate;
     private LocalDate toDate;
 }

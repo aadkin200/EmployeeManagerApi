@@ -5,8 +5,6 @@ import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -16,21 +14,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "salaries")
-@IdClass(SalaryId.class)
+@Table(name = "titles")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Salary {
-	@EmbeddedId
-    private SalaryId id;
+public class Title {
+
+    @EmbeddedId
+    private TitleId id;
 
     @ManyToOne
     @MapsId("empNo")
     @JoinColumn(name = "emp_no")
     private Employee employee;
-
-    private Integer salary;
 
     @Column(name = "to_date")
     private LocalDate toDate;
