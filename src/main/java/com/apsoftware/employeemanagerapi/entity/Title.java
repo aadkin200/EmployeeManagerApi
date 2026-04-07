@@ -22,14 +22,29 @@ public class Title {
 
     // getters/setters
 
-    public TitleId getId() { return id; }
-    public void setId(TitleId id) { this.id = id; }
+    public TitleId getId() {
+        return id;
+    }
 
-    public Employee getEmployee() { return employee; }
-    public void setEmployee(Employee employee) { this.employee = employee; }
+    public void setId(TitleId id) {
+        this.id = id;
+    }
 
-    public LocalDate getToDate() { return toDate; }
-    public void setToDate(LocalDate toDate) { this.toDate = toDate; }
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public LocalDate getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(LocalDate toDate) {
+        this.toDate = toDate;
+    }
 
     // convenience methods (these are GOOD, keep them)
 
@@ -43,8 +58,10 @@ public class Title {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Title)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Title))
+            return false;
         Title that = (Title) o;
         return Objects.equals(id, that.id);
     }

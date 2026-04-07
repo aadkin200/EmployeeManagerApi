@@ -23,23 +23,40 @@ public class TitleId implements Serializable {
 
     // getters/setters
 
-    public Integer getEmpNo() { return empNo; }
-    public void setEmpNo(Integer empNo) { this.empNo = empNo; }
+    public Integer getEmpNo() {
+        return empNo;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public void setEmpNo(Integer empNo) {
+        this.empNo = empNo;
+    }
 
-    public LocalDate getFromDate() { return fromDate; }
-    public void setFromDate(LocalDate fromDate) { this.fromDate = fromDate; }
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public LocalDate getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(LocalDate fromDate) {
+        this.fromDate = fromDate;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TitleId)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof TitleId))
+            return false;
         TitleId that = (TitleId) o;
         return Objects.equals(empNo, that.empNo) &&
-               Objects.equals(title, that.title) &&
-               Objects.equals(fromDate, that.fromDate);
+                Objects.equals(title, that.title) &&
+                Objects.equals(fromDate, that.fromDate);
     }
 
     @Override

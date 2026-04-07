@@ -8,8 +8,8 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class DeptManagerId implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     @Column(name = "emp_no")
     private Integer empNo;
@@ -17,19 +17,31 @@ public class DeptManagerId implements Serializable {
     @Column(name = "dept_no")
     private String deptNo;
 
-    public Integer getEmpNo() { return empNo; }
-    public void setEmpNo(Integer empNo) { this.empNo = empNo; }
+    public Integer getEmpNo() {
+        return empNo;
+    }
 
-    public String getDeptNo() { return deptNo; }
-    public void setDeptNo(String deptNo) { this.deptNo = deptNo; }
+    public void setEmpNo(Integer empNo) {
+        this.empNo = empNo;
+    }
+
+    public String getDeptNo() {
+        return deptNo;
+    }
+
+    public void setDeptNo(String deptNo) {
+        this.deptNo = deptNo;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof DeptManagerId)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof DeptManagerId))
+            return false;
         DeptManagerId that = (DeptManagerId) o;
         return Objects.equals(empNo, that.empNo) &&
-               Objects.equals(deptNo, that.deptNo);
+                Objects.equals(deptNo, that.deptNo);
     }
 
     @Override

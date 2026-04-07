@@ -14,5 +14,5 @@ public interface DeptEmpRepository extends JpaRepository<DeptEmp, DeptEmpId> {
 
     @Query("SELECT d FROM DeptEmp d WHERE d.employee.empNo = :empNo AND :maxDate BETWEEN d.fromDate AND d.toDate")
     Optional<DeptEmp> findCurrentDepartment(@Param("empNo") Integer empNo,
-                                           @Param("maxDate") LocalDate maxDate);
+            @Param("maxDate") LocalDate maxDate);
 }

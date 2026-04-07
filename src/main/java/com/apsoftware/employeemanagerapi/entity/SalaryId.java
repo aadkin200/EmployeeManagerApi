@@ -20,19 +20,31 @@ public class SalaryId implements Serializable {
 
     // getters/setters
 
-    public Integer getEmpNo() { return empNo; }
-    public void setEmpNo(Integer empNo) { this.empNo = empNo; }
+    public Integer getEmpNo() {
+        return empNo;
+    }
 
-    public LocalDate getFromDate() { return fromDate; }
-    public void setFromDate(LocalDate fromDate) { this.fromDate = fromDate; }
+    public void setEmpNo(Integer empNo) {
+        this.empNo = empNo;
+    }
+
+    public LocalDate getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(LocalDate fromDate) {
+        this.fromDate = fromDate;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SalaryId)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof SalaryId))
+            return false;
         SalaryId that = (SalaryId) o;
         return Objects.equals(empNo, that.empNo) &&
-               Objects.equals(fromDate, that.fromDate);
+                Objects.equals(fromDate, that.fromDate);
     }
 
     @Override

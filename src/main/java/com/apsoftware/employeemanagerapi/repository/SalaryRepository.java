@@ -14,5 +14,5 @@ public interface SalaryRepository extends JpaRepository<Salary, SalaryId> {
 
     @Query("SELECT s FROM Salary s WHERE s.employee.empNo = :empNo AND :maxDate BETWEEN s.id.fromDate AND s.toDate")
     Optional<Salary> findCurrentSalary(@Param("empNo") Integer empNo,
-                                       @Param("maxDate") LocalDate maxDate);
+            @Param("maxDate") LocalDate maxDate);
 }

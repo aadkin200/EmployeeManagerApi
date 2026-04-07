@@ -25,22 +25,44 @@ public class Salary {
 
     // getters/setters
 
-    public SalaryId getId() { return id; }
-    public void setId(SalaryId id) { this.id = id; }
+    public SalaryId getId() {
+        return id;
+    }
 
-    public Employee getEmployee() { return employee; }
-    public void setEmployee(Employee employee) { this.employee = employee; }
+    public void setId(SalaryId id) {
+        this.id = id;
+    }
 
-    public Integer getSalary() { return salary; }
-    public void setSalary(Integer salary) { this.salary = salary; }
+    public Employee getEmployee() {
+        return employee;
+    }
 
-    public LocalDate getToDate() { return toDate; }
-    public void setToDate(LocalDate toDate) { this.toDate = toDate; }
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+
+    public LocalDate getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(LocalDate toDate) {
+        this.toDate = toDate;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Salary)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Salary))
+            return false;
         Salary that = (Salary) o;
         return Objects.equals(id, that.id);
     }

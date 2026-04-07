@@ -16,63 +16,62 @@ import com.apsoftware.employeemanagerapi.repository.TitleRepository;
 
 @Service
 public class EmployeeService {
-	private static final LocalDate MAX_DATE = LocalDate.of(9999, 1, 1);
+        private static final LocalDate MAX_DATE = LocalDate.of(9999, 1, 1);
 
-    private final EmployeeRepository employeeRepository;
-    
-    private final SalaryRepository salaryRepository;
-    private final DeptEmpRepository deptEmpRepository;
-    private final TitleRepository titleRepository;
+        private final EmployeeRepository employeeRepository;
 
-    // ✅ constructor injection (good)
-    public EmployeeService(EmployeeRepository employeeRepository,
-            SalaryRepository salaryRepository,
-            DeptEmpRepository deptEmpRepository,
-            TitleRepository titleRepository) {
+        private final SalaryRepository salaryRepository;
+        private final DeptEmpRepository deptEmpRepository;
+        private final TitleRepository titleRepository;
 
-    	this.employeeRepository = employeeRepository;
-    	this.salaryRepository = salaryRepository;
-    	this.deptEmpRepository = deptEmpRepository;
-    	this.titleRepository = titleRepository;
-}
+        // ✅ constructor injection (good)
+        public EmployeeService(EmployeeRepository employeeRepository,
+                        SalaryRepository salaryRepository,
+                        DeptEmpRepository deptEmpRepository,
+                        TitleRepository titleRepository) {
 
-    public EmployeeResponse getEmployee(Integer id) {
-        Employee e = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+                this.employeeRepository = employeeRepository;
+                this.salaryRepository = salaryRepository;
+                this.deptEmpRepository = deptEmpRepository;
+                this.titleRepository = titleRepository;
+        }
 
-        return mapToResponse(e);
-    }
+        public EmployeeResponse getEmployee(Integer id) {
+                Employee e = employeeRepository.findById(id)
+                                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
 
-    public List<EmployeeResponse> getAllEmployees() {
-        return employeeRepository.findAll()
-                .stream()
-                .map(this::mapToResponse)
-                .toList();
-    }
+                return mapToResponse(e);
+        }
 
-    private EmployeeResponse mapToResponse(Employee e) {
+        public List<EmployeeResponse> getAllEmployees() {
+                return employeeRepository.findAll()
+                                .stream()
+                                .map(this::mapToResponse)
+                                .toList();
+        }
 
-        String department = deptEmpRepository
-                .findCurrentDepartment(e.getEmpNo(), MAX_DATE)
-                .map(d -> d.getDepartment().getDeptName())
-                .orElse(null);
+        private EmployeeResponse mapToResponse(Employee e) {
 
-        String title = titleRepository
-                .findCurrentTitle(e.getEmpNo())
-                .map(Title::getTitle)
-                .orElse(null);
+                String department = deptEmpRepository
+                                .findCurrentDepartment(e.getEmpNo(), MAX_DATE)
+                                .map(d -> d.getDepartment().getDeptName())
+                                .orElse(null);
 
-        Integer salary = salaryRepository
-                .findCurrentSalary(e.getEmpNo(), MAX_DATE)
-                .map(Salary::getSalary)
-                .orElse(null);
+                String title = titleRepository
+                                .findCurrentTitle(e.getEmpNo())
+                                .map(Title::getTitle)
+                                .orElse(null);
 
-        return new EmployeeResponse(
-                e.getEmpNo(),
-                e.getFirstName() + " " + e.getLastName(),
-                department,
-                title,
-                salary
-        );
-    }
+                Integer salary = salaryRepository
+                                .findCurrentSalary(e.getEmpNo(), MAX_DATE)
+                                .map(Salary::getSalary)
+                                .orElse(null);
+
+                return new EmployeeResponse(
+                                e.getEmpNo(),
+                                e.getFirstName() + " " + e.getLastName(),
+                                department,
+                                title,
+                                salary);
+        }
 }

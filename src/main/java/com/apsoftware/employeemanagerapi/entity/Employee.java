@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -53,42 +52,94 @@ public class Employee {
 
     // getters/setters
 
-    public Integer getEmpNo() { return empNo; }
-    public void setEmpNo(Integer empNo) { this.empNo = empNo; }
+    public Integer getEmpNo() {
+        return empNo;
+    }
 
-    public LocalDate getBirthDate() { return birthDate; }
-    public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
+    public void setEmpNo(Integer empNo) {
+        this.empNo = empNo;
+    }
 
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
 
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
 
-    public Gender getGender() { return gender; }
-    public void setGender(Gender gender) { this.gender = gender; }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public LocalDate getHireDate() { return hireDate; }
-    public void setHireDate(LocalDate hireDate) { this.hireDate = hireDate; }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public List<Salary> getSalaries() { return salaries; }
-    public void setSalaries(List<Salary> salaries) { this.salaries = salaries; }
+    public String getLastName() {
+        return lastName;
+    }
 
-    public List<Title> getTitles() { return titles; }
-    public void setTitles(List<Title> titles) { this.titles = titles; }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-    public List<DeptEmp> getDepartments() { return departments; }
-    public void setDepartments(List<DeptEmp> departments) { this.departments = departments; }
+    public Gender getGender() {
+        return gender;
+    }
 
-    public List<DeptManager> getManagedDepartments() { return managedDepartments; }
-    public void setManagedDepartments(List<DeptManager> managedDepartments) { this.managedDepartments = managedDepartments; }
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(LocalDate hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public List<Salary> getSalaries() {
+        return salaries;
+    }
+
+    public void setSalaries(List<Salary> salaries) {
+        this.salaries = salaries;
+    }
+
+    public List<Title> getTitles() {
+        return titles;
+    }
+
+    public void setTitles(List<Title> titles) {
+        this.titles = titles;
+    }
+
+    public List<DeptEmp> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<DeptEmp> departments) {
+        this.departments = departments;
+    }
+
+    public List<DeptManager> getManagedDepartments() {
+        return managedDepartments;
+    }
+
+    public void setManagedDepartments(List<DeptManager> managedDepartments) {
+        this.managedDepartments = managedDepartments;
+    }
 
     // equals/hashCode (ONLY ID)
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Employee)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Employee))
+            return false;
         Employee that = (Employee) o;
         return Objects.equals(empNo, that.empNo);
     }

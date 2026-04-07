@@ -34,25 +34,52 @@ public class DeptManager {
     @Column(name = "to_date", nullable = false)
     private LocalDate toDate;
 
-    public DeptManagerId getId() { return id; }
-    public void setId(DeptManagerId id) { this.id = id; }
+    public DeptManagerId getId() {
+        return id;
+    }
 
-    public Employee getEmployee() { return employee; }
-    public void setEmployee(Employee employee) { this.employee = employee; }
+    public void setId(DeptManagerId id) {
+        this.id = id;
+    }
 
-    public Department getDepartment() { return department; }
-    public void setDepartment(Department department) { this.department = department; }
+    public Employee getEmployee() {
+        return employee;
+    }
 
-    public LocalDate getFromDate() { return fromDate; }
-    public void setFromDate(LocalDate fromDate) { this.fromDate = fromDate; }
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
-    public LocalDate getToDate() { return toDate; }
-    public void setToDate(LocalDate toDate) { this.toDate = toDate; }
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public LocalDate getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(LocalDate fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public LocalDate getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(LocalDate toDate) {
+        this.toDate = toDate;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof DeptManager)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof DeptManager))
+            return false;
         DeptManager that = (DeptManager) o;
         return Objects.equals(id, that.id);
     }

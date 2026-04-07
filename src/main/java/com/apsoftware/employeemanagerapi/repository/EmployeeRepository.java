@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.apsoftware.employeemanagerapi.entity.Employee;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
-	List<Employee> findByLastName(String lastName);
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+    List<Employee> findByLastName(String lastName);
 
     List<Employee> findByFirstNameAndLastName(String firstName, String lastName);
 

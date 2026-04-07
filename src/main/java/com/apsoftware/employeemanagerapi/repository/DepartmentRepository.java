@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.apsoftware.employeemanagerapi.entity.Department;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Department, String>{
+public interface DepartmentRepository extends JpaRepository<Department, String> {
 	Optional<Department> findByDeptName(String deptName);
 }

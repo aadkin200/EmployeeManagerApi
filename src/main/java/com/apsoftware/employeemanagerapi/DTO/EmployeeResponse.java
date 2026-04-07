@@ -16,11 +16,23 @@ public class EmployeeResponse {
         this.salary = salary;
     }
 
-    // getters
+    public Integer getEmpNo() {
+        return empNo;
+    }
 
-    public Integer getEmpNo() { return empNo; }
-    public String getFullName() { return fullName; }
-    public String getDepartment() { return department; }
-    public String getTitle() { return title; }
-    public Integer getSalary() { return salary; }
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Integer getSalary() {
+        return salary;
+    }
 }
