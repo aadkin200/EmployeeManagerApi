@@ -1,24 +1,18 @@
-package repository;
+package com.apsoftware.employeemanagerapi.repository;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.query.Param;
 
 import com.apsoftware.employeemanagerapi.entity.DeptEmp;
 import com.apsoftware.employeemanagerapi.entity.DeptEmpId;
 
-@Repository
 public interface DeptEmpRepository extends JpaRepository<DeptEmp, DeptEmpId> {
 
-    List<DeptEmp> findByEmployee_EmpNo(Integer empNo);
-
-    List<DeptEmp> findByDepartment_DeptNo(String deptNo);
-
-    // Current department (assuming "active" = toDate in future)
-    @Query("SELECT d FROM DeptEmp d WHERE d.employee.empNo = :empNo AND d.toDate = :toDate")
-    List<DeptEmp> findCurrentDepartment(Integer empNo, LocalDate toDate);
-
+    @Query("SELECT d FROM DeptEmp d WHERE d.employee.empNo = :empNo AND :maxDate BETWEEN d.fromDate AND d.toDate")
+    Optional<DeptEmp> findCurrentDepartment(@Param("empNo") Integer empNo,
+                                           @Param("maxDate") LocalDate maxDate);
 }

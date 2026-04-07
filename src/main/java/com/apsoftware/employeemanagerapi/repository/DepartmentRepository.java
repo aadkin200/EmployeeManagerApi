@@ -1,4 +1,4 @@
-package repository;
+package com.apsoftware.employeemanagerapi.repository;
 
 import java.util.Optional;
 

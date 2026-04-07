@@ -1,22 +1,18 @@
 package com.apsoftware.employeemanagerapi.entity;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "dept_manager")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class DeptManager {
 
     @EmbeddedId
@@ -32,6 +28,37 @@ public class DeptManager {
     @JoinColumn(name = "dept_no")
     private Department department;
 
+    @Column(name = "from_date", nullable = false)
     private LocalDate fromDate;
+
+    @Column(name = "to_date", nullable = false)
     private LocalDate toDate;
+
+    public DeptManagerId getId() { return id; }
+    public void setId(DeptManagerId id) { this.id = id; }
+
+    public Employee getEmployee() { return employee; }
+    public void setEmployee(Employee employee) { this.employee = employee; }
+
+    public Department getDepartment() { return department; }
+    public void setDepartment(Department department) { this.department = department; }
+
+    public LocalDate getFromDate() { return fromDate; }
+    public void setFromDate(LocalDate fromDate) { this.fromDate = fromDate; }
+
+    public LocalDate getToDate() { return toDate; }
+    public void setToDate(LocalDate toDate) { this.toDate = toDate; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DeptManager)) return false;
+        DeptManager that = (DeptManager) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
